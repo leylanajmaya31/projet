@@ -12,9 +12,9 @@ class UtilisateurController extends Utilisateur{
             //!test si les champs sont remplis
             if(!empty($_POST['nom_utilisateur']) AND !empty($_POST['prenom_utilisateur']) 
             AND !empty($_POST['email_utilisateur']) AND !empty($_POST['mdp_utilisateur']) 
-            AND !empty($_POST['repeat_password_utilisateur'])){
+            AND !empty($_POST['repeat_mdp_utilisateur'])){
                 //!Test si les mots de passe correspondent
-                if($_POST['password_utilisateur']==$_POST['repeat_password_utilisateur']){
+                if($_POST['password_utilisateur']==$_POST['repeat_mdp_utilisateur']){
                     //!setter les valeurs à l'objet UtilisateurController
                     $this->setNom(Utilitaire::cleanInput($_POST['nom_utilisateur']));
                     $this->setPrenom(Utilitaire::cleanInput($_POST['prenom_utilisateur']));
@@ -42,7 +42,7 @@ class UtilisateurController extends Utilisateur{
                         $destinataire = $this->getEmail();
                         $objet = "Cliques plus bas pour faire fonctionner le compte";
                         $contenu = "<p>Cliques en dessous pour accéder au site 
-                        </p><a href='http://localhost/choco/useractivate?mail=$destinataire'>Cliquez ici !</a>";
+                        </p><a href='http://localhost/projet/useractivate?mail=$destinataire'>Cliquez ici !</a>";
                         //!Ajouter le compte en BDD
                         $this->add();
                         //!Envoyer le mail de confirmation de compte
@@ -68,7 +68,7 @@ class UtilisateurController extends Utilisateur{
         //!tester si le formulaire est submit
         if(isset($_POST['submit'])){
             //!tester si les champs sont remplis
-            if(!empty($_POST['mail_utilisateur']) AND !empty($_POST['mdp_utilisateur'])){
+            if(!empty($_POST['email_utilisateur']) AND !empty($_POST['mdp_utilisateur'])){
                 //!tester si le compte existe (findOneBy du model)
                 $this->setEmail(Utilitaire::cleanInput($_POST['email_utilisateur']));
                 $user = $this->findOneBy();
@@ -105,9 +105,9 @@ class UtilisateurController extends Utilisateur{
         $error = "";
         $url = "";
         //!tester si le paramètre existe
-        if(isset($_GET['mail'])){
+        if(isset($_GET['email'])){
             //!tester si le paramètre $_GET['mail'] est rempli
-            if(!empty(($_GET['mail']))){
+            if(!empty(($_GET['email']))){
                 //!setter la valeur de $_GET['mail'] à l'attribut mail_utilisateur
                 $this->setEmail(Utilitaire::cleanInput($_GET['email']));
                 //!appeler la fonction findOneBy qui va retourner un compte (objet) 
@@ -123,13 +123,13 @@ class UtilisateurController extends Utilisateur{
                     $url = "./useradd";
                 }
             }
-            //!tester si le paramètre $_GET['mail'] est vide
+            //!tester si le paramètre $_GET['email'] est vide
             else{
                 $error = 'le mail n\'est pas renseigné';
                 $url = "./useradd";
             }
         }
-        //!le paramètre $_GET['mail'] n'existe pas
+        //!le paramètre $_GET['email'] n'existe pas
         else{
             $error = 'le paramètre n\'existe pas';
             $url = "./useradd";

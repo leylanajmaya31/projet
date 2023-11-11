@@ -58,7 +58,7 @@
         </li>
         <li class="active"><a href="panier2.html"><i class='bx bx-cart-download' style='color:#B6452C'></i> Panier</a></li>
       </ul>
-      <button id="menuToggle"><img src="/images/hamburger.svg" alt="Ouvrir/fermer le menu"></button>
+      <!-- <button id="menuToggle"><img src="/images/hamburger.svg" alt="Ouvrir/fermer le menu"></button> -->
     </nav>
 
 <?php endif;?>

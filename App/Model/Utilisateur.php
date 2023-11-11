@@ -15,6 +15,11 @@ class Utilisateur extends BddConnect{
     public function __construct(){
         $this->role = new Role();
     }
+
+    // public function initializeRole(){
+    //     $this->role = new Role();
+    // }
+    
     //!Getters et Setters
     public function getId():?int{
         return $this->id_utilisateur;
@@ -71,7 +76,7 @@ class Utilisateur extends BddConnect{
             $nom = $this->nom_utilisateur;
             $prenom = $this->prenom_utilisateur;
             $email = $this->email_utilisateur;
-            $password = $this->mdp_utilisateur;
+            $mdp = $this->mdp_utilisateur;
             $image = $this->image_utilisateur;
             $statut = $this->statut_utilisateur;
             $req = $this->connexion()->prepare(
@@ -80,7 +85,7 @@ class Utilisateur extends BddConnect{
             $req->bindParam(1, $nom, \PDO::PARAM_STR);
             $req->bindParam(2, $prenom, \PDO::PARAM_STR);
             $req->bindParam(3, $email, \PDO::PARAM_STR);
-            $req->bindParam(4, $password, \PDO::PARAM_STR);
+            $req->bindParam(4, $mdp, \PDO::PARAM_STR);
             $req->bindParam(5, $image, \PDO::PARAM_STR);
             $req->bindParam(6, $statut, \PDO::PARAM_BOOL);
             $req->execute();
@@ -94,7 +99,7 @@ class Utilisateur extends BddConnect{
             $mail = $this->email_utilisateur;
             $req = $this->connexion()->prepare(
                 "SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur, 
-                email_utilisateur, password_utilisateur, statut_utilisateur, image_utilisateur 
+                email_utilisateur, mdp_utilisateur, statut_utilisateur, image_utilisateur 
                 FROM utilisateur WHERE mail_utilisateur = ?");
             $req->bindParam(1, $mail, \PDO::PARAM_STR);
             $req->setFetchMode(\PDO::FETCH_CLASS| \PDO::FETCH_PROPS_LATE, Utilisateur::class);

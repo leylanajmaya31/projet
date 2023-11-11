@@ -11,10 +11,9 @@ class RecetteController extends Recette{
         $user->setId(Utilitaire::cleanInput($_SESSION['id']));
         $users = $user->findAll();
         if(isset($_POST['submit'])){
-            if(!empty($_POST['nom_recette']) AND !empty($_POST['date_recette']) 
-            AND !empty($_POST['cible_chocoblast'])){
-                $this->setNom(Utilitaire::cleanInput($_POST['slogan_chocoblast']));
-                $this->setDate(Utilitaire::cleanInput($_POST['date_chocoblast']));
+            if(!empty($_POST['nom_recette']) AND !empty($_POST['date_recette']) ){
+                $this->setNom(Utilitaire::cleanInput($_POST['nom_recette']));
+                $this->setDate(Utilitaire::cleanInput($_POST['date_recette']));
                 // $this->setStatut(false);
                 $recette = $this->findOneBy();
                 if($recette){

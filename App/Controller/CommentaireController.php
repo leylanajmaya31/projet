@@ -8,9 +8,9 @@ use App\Utils\Utilitaire;
 class CommentaireController extends Commentaire{
     public function addCommentaire(){
         $error = "";
-        //test si le paramètre $_GET['id_chocoblast'] si il existe
+        //test si le paramètre $_GET['id_recette'] si il existe
         if(isset($_GET['id_recette'])){
-            //test si le paramètre $_GET['id_chocoblast'] si il est différent de vide
+            //test si le paramètre $_GET['id_recette'] si il est différent de vide
             if(!empty($_GET['id_recette'])){
                 $recette = new recette();
                 $recette->setId($_GET['id_recette']);
