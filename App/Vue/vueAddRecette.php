@@ -16,7 +16,7 @@
         <input type="number" id="portion" name="portion_recette"></input>
         <label for="temps_recette"> Temps de cuisson </label>
         <input type="time" id="temps" name="temps_recette">
-        <button type="submit"> SOUMETTRE LA RECETTE </button>
+        <button type="submit" name="submit"> SOUMETTRE LA RECETTE </button>
     </form>
     <p><?=$error?></p>
 <?php $content = ob_get_clean()?>

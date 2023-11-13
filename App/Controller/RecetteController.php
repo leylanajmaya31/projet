@@ -31,7 +31,7 @@ class RecetteController extends Recette{
         Template::render('navbar.php', 'footer.php','vueAddRecette.php','Recette',   
         ['script.js', 'main.js'],['style.css', 'main.css'],$error,$users);
     }
-}
+
 
     // public function getRecette(){
     //     $error = "";
@@ -44,21 +44,21 @@ class RecetteController extends Recette{
     // }
 
 
-//     public function filterRecette(){
-//         $error = "";
-//         $recettes = $this->filterAll(5);
-//         if($recettes){
-//             if(isset($_POST['submit'])){
-//                 if(!empty($_POST['filter'])){
-//                     $recettes = $this->filterAll(Utilitaire::cleanInput($_POST['filter']));
-//                 }
-//             }
-//         }
-//         else{
-//             $error = "La liste des recettes est vide ";
-//         }
+    // public function filterRecette(){
+    //     $error = "";
+    //     $recettes = $this->filterAll(5);
+    //     if($recettes){
+    //         if(isset($_POST['submit'])){
+    //             if(!empty($_POST['filter'])){
+    //                 $recettes = $this->filterAll(Utilitaire::cleanInput($_POST['filter']));
+    //             }
+    //         }
+    //     }
+    //     else{
+    //         $error = "La liste des recettes est vide ";
+    //     }
 
-//         Template::render('navbar.php','footer.php','vueFilterAllRecettes.php','Filtrer recettes', 
-//         ['script.js', 'main.js'], ['style.css', 'main.css'],$error, $recettes);
-//     }
-// }
+    //     Template::render('navbar.php','footer.php','vueFilterAllRecettes.php','Filtrer recettes', 
+    //     ['script.js', 'main.js'], ['style.css', 'main.css'],$error, $recettes);
+    // }
+}

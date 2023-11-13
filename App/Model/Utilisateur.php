@@ -121,7 +121,7 @@ class Utilisateur extends BddConnect{
     }
     public function update(){
         try {
-            $mail = $this->email_utilisateur;
+            $email = $this->email_utilisateur;
             $req = $this->connexion()->prepare('UPDATE utilisateur SET 
             statut_utilisateur = true WHERE email_utilisateur = ?');
             $req->bindParam(1, $email, \PDO::PARAM_STR);

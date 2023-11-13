@@ -2,7 +2,7 @@
 <?php if(isset($_SESSION['connected'])):?>
   <header>
     <div class="logo">
-      <img src="Public/asset/images/New_Logo_Share&Cook.png" alt="">
+      <img src="./Public/asset/images/New_Logo_Share&Cook.png" alt="">
       <h2 id="headTitle"> À vos marques...Prêts...Pâtissez !</h2>
     </div>
   <nav>
@@ -32,8 +32,14 @@
         </li>
         <li class="active"><a href="panier2.html"><i class='bx bx-cart-download' style='color:#B6452C'></i> Panier</a></li>
       </ul>
-      <button id="menuToggle"><img src="/images/hamburger.svg" alt="Ouvrir/fermer le menu"></button>
+      <!-- <button id="menuToggle"><img src="/images/hamburger.svg" alt="Ouvrir/fermer le menu"></button> -->
     </nav>
+    <div class="container">
+    <form action="" class="searchBar">
+      <input type="text" placeholder="Rechercher une recette, un ingrédient" name="q">
+      <button type="submit"><img src="Public/asset/images/search.png" alt="icône de recherche"></button>
+    </form>
+  </div>
 <?php else:?>
   <nav>
       <ul>

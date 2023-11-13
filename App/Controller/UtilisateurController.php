@@ -35,11 +35,12 @@ class UtilisateurController extends Utilisateur{
                         else{
                             $this->setImage('test.png');
                         }
-                        $this->setStatut(false);
+                        $this->setStatut(true);
                         //!hashser le mot de passe
                         $this->setMdp(password_hash(Utilitaire::cleanInput($_POST['mdp_utilisateur']), PASSWORD_DEFAULT));
                         //!Créer les variables
                         $destinataire = $this->getEmail();
+                        // dd($destinataire);
                         $objet = "Cliques plus bas pour faire fonctionner le compte";
                         $contenu = "<p>Cliques en dessous pour accéder au site 
                         </p><a href='http://localhost/projet/useractivate?mail=$destinataire'>Cliquez ici !</a>";
@@ -75,12 +76,15 @@ class UtilisateurController extends Utilisateur{
                 if($user){
                     //!tester si le mot de passe correspond (password_verify)
                     if(password_verify(Utilitaire::cleanInput($_POST['mdp_utilisateur']), $user->getMdp())){
-                        $error = "Connecté";;
+                    dd($_SESSION);
+                        $error = "Connecté";
                         $_SESSION['connected'] = true;
                         $_SESSION['id'] = $user->getId();
                         $_SESSION['nom'] = $user->getNom();
                         $_SESSION['prenom'] = $user->getPrenom();
                         $_SESSION['image'] = $user->getImage();
+                        $error = 'vous êtes connecté';
+                        header('Location: ./');
                     }else {
                         $error = "Les informations de connexion ne sont pas valides";
                     }
