@@ -1,5 +1,10 @@
 <?php ob_start()?>
 <?php if(isset($_SESSION['connected'])):?>
+  <header>
+    <div class="logo">
+      <img src="Public/asset/images/New_Logo_Share&Cook.png" alt="">
+      <h2 id="headTitle"> À vos marques...Prêts...Pâtissez !</h2>
+    </div>
   <nav>
       <ul>
         <li class="active"><a href="#"><i class='bx bx-home' style='color:#b6452c'></i> Accueil</a></li>
@@ -61,5 +66,11 @@
       <!-- <button id="menuToggle"><img src="/images/hamburger.svg" alt="Ouvrir/fermer le menu"></button> -->
     </nav>
 
+    <div class="container">
+    <form action="" class="searchBar">
+      <input type="text" placeholder="Rechercher une recette, un ingrédient" name="q">
+      <button type="submit"><img src="Public/asset/images/search.png" alt="icône de recherche"></button>
+    </form>
+  </div>
 <?php endif;?>
 <?php $navbar = ob_get_clean()?>

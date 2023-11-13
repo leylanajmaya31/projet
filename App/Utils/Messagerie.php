@@ -20,7 +20,7 @@ class Messagerie{
             $mail->Port       = $port_messagerie;                       //ou 587 si 465 ne fonctionne pas. TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
             //!Recipients
-            $mail->setFrom($login_messagerie, 'Administrateur Eco-Manga');
+            $mail->setFrom($login_messagerie, 'Administrateur Share&cook');
             $mail->addAddress($destinataire);     //Add a recipient
             // $mail->addAddress('ellen@example.com');               //Name is optional -> ici boucle pour faire une newsletter
             // $mail->addReplyTo('info@example.com', 'Information'); //Pour permettre au client de répondre, sinon l'enlever

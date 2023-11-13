@@ -16,9 +16,6 @@ class Utilisateur extends BddConnect{
         $this->role = new Role();
     }
 
-    // public function initializeRole(){
-    //     $this->role = new Role();
-    // }
     
     //!Getters et Setters
     public function getId():?int{
@@ -80,7 +77,7 @@ class Utilisateur extends BddConnect{
             $image = $this->image_utilisateur;
             $statut = $this->statut_utilisateur;
             $req = $this->connexion()->prepare(
-                "INSERT INTO compte_utilisateur(nom_utilisateur, prenom_utilisateur, 
+                "INSERT INTO utilisateur(nom_utilisateur, prenom_utilisateur, 
                 email_utilisateur, mdp_utilisateur, image_utilisateur, statut_utilisateur) VALUES(?,?,?,?,?,?)");
             $req->bindParam(1, $nom, \PDO::PARAM_STR);
             $req->bindParam(2, $prenom, \PDO::PARAM_STR);
@@ -100,7 +97,7 @@ class Utilisateur extends BddConnect{
             $req = $this->connexion()->prepare(
                 "SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur, 
                 email_utilisateur, mdp_utilisateur, statut_utilisateur, image_utilisateur 
-                FROM utilisateur WHERE mail_utilisateur = ?");
+                FROM utilisateur WHERE email_utilisateur = ?");
             $req->bindParam(1, $mail, \PDO::PARAM_STR);
             $req->setFetchMode(\PDO::FETCH_CLASS| \PDO::FETCH_PROPS_LATE, Utilisateur::class);
             $req->execute();
@@ -114,7 +111,7 @@ class Utilisateur extends BddConnect{
             $id = $this->getId();
             $req = $this->connexion()->prepare(
                 "SELECT id_utilisateur, nom_utilisateur, prenom_utilisateur, 
-                email_utilisateur, image_utilisateur FROM compte_utilisateur WHERE id_utilisateur != ?");
+                email_utilisateur, image_utilisateur FROM utilisateur WHERE id_utilisateur != ?");
             $req->bindParam(1, $id, \PDO::PARAM_INT);
             $req->execute();
             return $req->fetchAll(\PDO::FETCH_CLASS| \PDO::FETCH_PROPS_LATE, Utilisateur::class);
@@ -125,9 +122,9 @@ class Utilisateur extends BddConnect{
     public function update(){
         try {
             $mail = $this->email_utilisateur;
-            $req = $this->connexion()->prepare('UPDATE compte_utilisateur SET 
+            $req = $this->connexion()->prepare('UPDATE utilisateur SET 
             statut_utilisateur = true WHERE email_utilisateur = ?');
-            $req->bindParam(1, $mail, \PDO::PARAM_STR);
+            $req->bindParam(1, $email, \PDO::PARAM_STR);
             $req->execute();
         } 
         catch (\Exception $e) {

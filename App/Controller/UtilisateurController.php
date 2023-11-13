@@ -14,7 +14,7 @@ class UtilisateurController extends Utilisateur{
             AND !empty($_POST['email_utilisateur']) AND !empty($_POST['mdp_utilisateur']) 
             AND !empty($_POST['repeat_mdp_utilisateur'])){
                 //!Test si les mots de passe correspondent
-                if($_POST['password_utilisateur']==$_POST['repeat_mdp_utilisateur']){
+                if($_POST['mdp_utilisateur']==$_POST['repeat_mdp_utilisateur']){
                     //!setter les valeurs à l'objet UtilisateurController
                     $this->setNom(Utilitaire::cleanInput($_POST['nom_utilisateur']));
                     $this->setPrenom(Utilitaire::cleanInput($_POST['prenom_utilisateur']));
@@ -74,8 +74,8 @@ class UtilisateurController extends Utilisateur{
                 $user = $this->findOneBy();
                 if($user){
                     //!tester si le mot de passe correspond (password_verify)
-                    if(password_verify(Utilitaire::cleanInput($_POST['mdp_utilisateur']), $user->getPassword())){
-                        $error = "Connecté";
+                    if(password_verify(Utilitaire::cleanInput($_POST['mdp_utilisateur']), $user->getMdp())){
+                        $error = "Connecté";;
                         $_SESSION['connected'] = true;
                         $_SESSION['id'] = $user->getId();
                         $_SESSION['nom'] = $user->getNom();
@@ -105,11 +105,11 @@ class UtilisateurController extends Utilisateur{
         $error = "";
         $url = "";
         //!tester si le paramètre existe
-        if(isset($_GET['email'])){
+        if(isset($_GET['email_utilisateur'])){
             //!tester si le paramètre $_GET['mail'] est rempli
-            if(!empty(($_GET['email']))){
+            if(!empty(($_GET['email_utilisateur']))){
                 //!setter la valeur de $_GET['mail'] à l'attribut mail_utilisateur
-                $this->setEmail(Utilitaire::cleanInput($_GET['email']));
+                $this->setEmail(Utilitaire::cleanInput($_GET['email_utilisateur']));
                 //!appeler la fonction findOneBy qui va retourner un compte (objet) 
                 //!qui existe ou false
                 if($this->findOneBy()){

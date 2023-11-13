@@ -19,7 +19,7 @@ class HomeController{
         ['script.js'], ['style.css'],$error);
     }
     public function testMail(){
-        Messagerie::sendEmail('leyla-jemaoui@hotmail.fr','exemple de mail', 'test d\'envoi depuis recette');
+        Messagerie::sendEmail('devnum@laposte.net','exemple de mail', 'test d\'envoi depuis recette');
     }
 }
 ?>
