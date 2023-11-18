@@ -24,6 +24,9 @@
             "path": "./App/Model/Utilisateur.php"
         },
         {
+            "path": "./App/Model/Ingredient.php"
+        },
+        {
             "path": "./App/Vue/Template.php"
         },
         {
@@ -31,6 +34,9 @@
         },
         {
             "path": "./App/Controller/HomeController.php"
+        },
+        {
+            "path": "./App/Controller/IngredientController.php"
         },
         {
             "path": "./App/Controller/RecetteController.php"

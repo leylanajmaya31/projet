@@ -9,11 +9,13 @@
     use App\Controller\HomeController;
     use App\Controller\RecetteController;
     use App\Controller\CommentaireController;
+    use App\Controller\IngredientController;
     $userController = new UtilisateurController();  
     $roleController = new RoleController();
     $homeController = new HomeController();   
     $recetteController = new RecetteController();
     $commentaireController = new CommentaireController();  
+    $ingredientController = new IngredientController();
     //!utilisation de session_start(pour gérer la connexion au serveur)
     session_start();
     //!Analyse de l'URL avec parse_url() et retourne ses composants
@@ -24,34 +26,37 @@
     if(isset($_SESSION['connected'])){
         //routeur
         switch ($path) {
-            case '/projet':
+            case '/projetfr':
                 $homeController->getHome();
                 break;
-            case '/projet/roleadd':
+            case '/projetfr/roleadd':
                 $roleController->addRole();
                 break;
-            case '/projet/userdeconnexion':
+            case '/projetfr/userdeconnexion':
                 $userController->deconnexionUser();
                 break;
-            case '/projet/recetteadd':
+            case '/projetfr/recetteadd':
                 $recetteController->addRecette();
                 break;
-            // case '/projet/recetteall':
-            //     $recetteController->getAllRecette();
-            //     break;
-            // case '/projet/recetteupdate':
+                case '/projetfr/ingredientadd':
+                    $ingredientController->addIngredient();
+                    break;
+            case '/projetfr/recetteall':
+                $recetteController->getAllRecette();
+                break;
+            // case '/projetfr/recetteupdate':
             //     $recetteController->updateRecette();
             //     break;
-            case '/projet/emailtest':
+            case '/projetfr/emailtest':
                 $homeController->testMail();
                 break;
-            // case '/projet/projetfilter':
+            // case '/projetfr/projetfilter':
             //     $recetteController->filterRecette();
             //     break;
-            case '/projett/commentaireadd':
+            case '/projetfr/commentaireadd':
                 $commentaireController->addCommentaire();
                 break;
-            case '/projet/commentaireall':
+            case '/projetfr/commentaireall':
                 $commentaireController->allCommentaire();
                 break;
             default:
@@ -62,32 +67,32 @@
     //!Version deconnecté
     else{
         switch ($path) {
-            case '/projet/':
+            case '/projetfr/':
                 $homeController->getHome();
                 break;
-            case '/projet/userconnexion':
+            case '/projetfr/userconnexion':
                 $userController->connexionUser();
                 break;
-            case '/projet/useradd':
+            case '/projetfr/useradd':
                 $userController->addUser();
                 break;
-            // case '/projet/recetteall':
+            // case '/projetfr/recetteall':
             //     $recetteController->getAllRecette();
             //     break;
-            case '/projet/emailtest':
+            case '/projetfr/emailtest':
                 $homeController->testMail();
                 break;
-            case '/projet/useractivate':
+            case '/projetfr/useractivate':
                 $userController->activateUser();
                 break;
-            // case '/projet/recettefilter':
+            // case '/projetfr/recettefilter':
             //     $recetteController->filterRecette();
             //     break;
-            case '/projet/commentaireall':
+            case '/projetfr/commentaireall':
                 $commentaireController->allCommentaire();
                 break;
-            case '/projet/commentaireadd':
-            case '/projet/recetteupdate':
+            case '/projetfr/commentaireadd':
+            case '/projetfr/recetteupdate':
                 $homeController->get401();
                 break;
             default:

@@ -27,7 +27,9 @@
         <li class="menu-deroulant">
           <a href="inscription-connexion.html"><i class='bx bx-user-circle' style='color:#B6452C'></i> Mon compte</a>
           <ul class="sous-menu">
-            <li><a href="connexion.html"> Mon compte</a>
+            <li><a href="connexion.html"> Profil</a>
+            <li><?=$_SESSION['nom']?></li>
+    <li><a href="./userdeconnexion">Deconnexion</a></li>
           </ul>
         </li>
         <li class="active"><a href="panier2.html"><i class='bx bx-cart-download' style='color:#B6452C'></i> Panier</a></li>

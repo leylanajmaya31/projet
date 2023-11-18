@@ -45,7 +45,7 @@ class Commentaire extends BddConnect{
     public function getDate():?string{
         return $this->date_commenter;
     }
-    public function setDAte(?string $date){
+    public function setDate(?string $date){
         $this->date_commenter = $date;
     }
     public function getAuteur():?Utilisateur{

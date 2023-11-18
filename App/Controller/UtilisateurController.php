@@ -76,7 +76,6 @@ class UtilisateurController extends Utilisateur{
                 if($user){
                     //!tester si le mot de passe correspond (password_verify)
                     if(password_verify(Utilitaire::cleanInput($_POST['mdp_utilisateur']), $user->getMdp())){
-                    dd($_SESSION);
                         $error = "Connecté";
                         $_SESSION['connected'] = true;
                         $_SESSION['id'] = $user->getId();
